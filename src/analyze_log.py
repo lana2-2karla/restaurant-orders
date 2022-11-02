@@ -1,3 +1,4 @@
+from collections import Counter
 import csv, sys
 
 
@@ -30,8 +31,19 @@ def turns_into_dict(path_to_file):
     return list_dict_custumers
 
 
+def most_requested_dish(client_name: str, list_customers: list):
+
+    plates = []
+
+    for costumer in list_customers:
+        if costumer['name'] == client_name:
+            plates.append(costumer['dish'])
+    print(Counter(plates))
+
+
 def analyze_log(path_to_file):
     requests_list_dict = turns_into_dict(path_to_file)
+    most_requested_dish('maria', requests_list_dict)
 
 
 

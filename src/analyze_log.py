@@ -15,9 +15,24 @@ def read_path(path_to_file):
     return requests_list
 
 
-def analyze_log(path_to_file):
+def turns_into_dict(path_to_file):
+
+    list_dict_custumers = []
     requests_list = read_path(path_to_file)
-    print(requests_list)
+
+    for request in requests_list:
+        dict_customers = {
+            "name": request[0],
+            "dish": request[1],
+            "day": request[2]
+        }
+        list_dict_custumers.append(dict_customers)
+    return list_dict_custumers
+
+
+def analyze_log(path_to_file):
+    requests_list_dict = turns_into_dict(path_to_file)
+
 
 
 analyze_log('data/orders_1.csv')

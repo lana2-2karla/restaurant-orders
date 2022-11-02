@@ -38,12 +38,26 @@ def most_requested_dish(client_name: str, list_customers: list):
     for costumer in list_customers:
         if costumer['name'] == client_name:
             plates.append(costumer['dish'])
-    print(Counter(plates))
+
+    counter_plates = Counter(plates)
+    return max(counter_plates, key=counter_plates.get)
+
+
+def quantity_plates(client_name: str, list_customers: list, plate: str):
+    plates = []
+
+    for costumer in list_customers:
+        if costumer['name'] == client_name:
+            plates.append(costumer['dish'])
+
+    counter_plates = Counter(plates)
+    return counter_plates[plate]
 
 
 def analyze_log(path_to_file):
     requests_list_dict = turns_into_dict(path_to_file)
     most_requested_dish('maria', requests_list_dict)
+    quantity_plates('arnaldo', requests_list_dict, 'hamburguer')
 
 
 

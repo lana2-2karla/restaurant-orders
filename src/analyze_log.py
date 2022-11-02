@@ -54,10 +54,21 @@ def quantity_plates(client_name: str, list_customers: list, plate: str):
     return counter_plates[plate]
 
 
+def dishes_never_ordered(client_name: str, list_customers: list):
+    plates = []
+
+    for costumer in list_customers:
+        plates.append(costumer['dish'])
+        set_plates = set(plates)
+        if costumer['name'] == client_name:
+            print(set_plates.difference(costumer['dish']))
+    
+
 def analyze_log(path_to_file):
     requests_list_dict = turns_into_dict(path_to_file)
     most_requested_dish('maria', requests_list_dict)
     quantity_plates('arnaldo', requests_list_dict, 'hamburguer')
+    dishes_never_ordered('joao', requests_list_dict)
 
 
 

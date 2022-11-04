@@ -1,5 +1,10 @@
 from collections import Counter
-import analyze_log
+
+from src.analyze_log import (
+    days_never_visited,
+    dishes_never_ordered,
+    most_requested_dish,
+)
 
 
 class TrackOrders:
@@ -15,13 +20,13 @@ class TrackOrders:
         self.orders.append(order)
 
     def get_most_ordered_dish_per_customer(self, customer):
-        return analyze_log.most_requested_dish(customer, self.orders)
+        return most_requested_dish(customer, self.orders)
 
     def get_never_ordered_per_customer(self, customer):
-        return analyze_log.dishes_never_ordered(customer, self.orders)
+        return dishes_never_ordered(customer, self.orders)
 
     def get_days_never_visited_per_customer(self, customer):
-        return analyze_log.days_never_visited(customer, self.orders)
+        return days_never_visited(customer, self.orders)
 
     def get_busiest_day(self):
         days = []

@@ -1,28 +1,27 @@
 from collections import Counter
-from analyze_log import days_never_visited, dishes_never_ordered, most_requested_dish
+import analyze_log
 
 
 class TrackOrders:
 
     def __init__(self):
         self.orders = []
-        
+
     def __len__(self):
         return len(self.orders)
-        
 
     def add_new_order(self, customer, order, day):
         order = {"name": customer, "dish": order, "order_day": day}
         self.orders.append(order)
 
     def get_most_ordered_dish_per_customer(self, customer):
-        return most_requested_dish(customer, self.orders)
+        return analyze_log.most_requested_dish(customer, self.orders)
 
     def get_never_ordered_per_customer(self, customer):
-        return dishes_never_ordered(customer, self.orders)
+        return analyze_log.dishes_never_ordered(customer, self.orders)
 
     def get_days_never_visited_per_customer(self, customer):
-        return days_never_visited(customer, self.orders)
+        return analyze_log.days_never_visited(customer, self.orders)
 
     def get_busiest_day(self):
 

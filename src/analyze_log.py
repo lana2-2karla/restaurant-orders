@@ -29,7 +29,7 @@ def turns_into_dict(path_to_file):
         dict_customers = {
             "name": request[0],
             "dish": request[1],
-            "day": request[2]
+            "order_day": request[2]
         }
         list_dict_custumers.append(dict_customers)
     return list_dict_custumers
@@ -76,9 +76,9 @@ def days_never_visited(client_name: str, list_costumers: list):
 
 
     for costumer in list_costumers:
-        set_plates.add(costumer['day'])
+        set_plates.add(costumer['order_day'])
         if costumer['name'] == client_name:
-            set_plates_costumer.add(costumer['day']) 
+            set_plates_costumer.add(costumer['order_day']) 
     return set_plates.difference(set_plates_costumer)
         
 

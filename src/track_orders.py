@@ -24,7 +24,6 @@ class TrackOrders:
         return analyze_log.days_never_visited(customer, self.orders)
 
     def get_busiest_day(self):
-
         days = []
 
         for costumer in self.orders:
